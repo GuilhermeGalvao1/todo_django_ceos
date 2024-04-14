@@ -1,0 +1,10 @@
+<h1>Sign up</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit" value="Sign up">
+</form>
+
+
+<p>Já possui uma conta? <a href="">Login</a></p>
