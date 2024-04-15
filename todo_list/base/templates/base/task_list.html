@@ -1,19 +1,28 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
+
+<div class="header-bar">
+    <div>
+        <h1 style="text-align: center; margin-top: 50px;">ToDo List</h1>
+        <h1 style="text-align: center; margin-top: 50px;">Bem vindo, {{request.user}}!</h1>
+        <h3>Você tem <i>{{count}}</i> tarefas incompletas.</h3>
+    </div>
+</div>
+
 {% if request.user.is_authenticated %}
-<h1>{{request.user}}</h1>
 <a href="{% url 'logout' %}">Logout</a>
 {% else %}
 <a href="{% url 'login' %}">Login</a>
-{%endif%}
+{% endif %}
 
 <hr>
-<h1>ToDo List</h1>
-<h1>Bem vindo, {{request.user}}!</h1>
-<a href="{% url 'task-create' %}">Adicionar Tarefa</a>
 
 <form method="GET">
     <input type="text" name="search-area" value="{{search_input}}">
     <input type="submit" value="Procurar...">
 </form>
+<a href="{% url 'task-create' %}">Adicionar Tarefa</a>
 
 <table>
     <tr>
@@ -24,7 +33,6 @@
     {% for task in tasks %}
     <tr>
         <td>{{task.título}}</td>
-        <td><a href="{% url 'task' task.id %}">Detalhes</a></td>
         <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
         <td><a href="{%url 'task-delete' task.id %}">Apagar</a></td>
     </tr>
@@ -32,3 +40,6 @@
     <h3>Lista de tarefas vazia</h3>
     {% endfor %}
 </table>
+
+{% endblock content %}
+

@@ -1,3 +1,6 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
 <h1>ToDo List</h1>
 <h1>Sign in</h1>
 
@@ -32,4 +35,6 @@
 </form>
 
 
-<p>Já possui uma conta? <a href="">Login</a></p>
+<p>Já possui uma conta? <a href="{% url 'login' %}">Login</a></p>
+
+{% endblock content %}
