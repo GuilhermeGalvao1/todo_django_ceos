@@ -1,3 +1,6 @@
+{% extends 'base/main.html' %}
+{% block content %}
+
 <h1>ToDo List</h1>
 <h1>Login</h1>
 
@@ -20,3 +23,5 @@
 </form>
 
 <p>Não possui uma conta? <a href="{% url 'register' %}">Registre-se</a></p>
+
+{% endblock content %}
