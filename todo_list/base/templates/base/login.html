@@ -1,10 +1,13 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<h1>ToDo List</h1>
-<h1>Login</h1>
+<div class="header-bar">
+    <div>
+        <h1>ToDo List</h1>
+        <h1>Login</h1>
+    </div>
+</div>
 
-<hr>
 
 <form method="POST">
     {% csrf_token %}
@@ -19,7 +22,7 @@
         {{ form.password }}
     </div>
     <br>
-    <input type="submit" value="Login">
+    <input class="button" type="submit" value="Login">
 </form>
 
 <p>Não possui uma conta? <a href="{% url 'register' %}">Registre-se</a></p>

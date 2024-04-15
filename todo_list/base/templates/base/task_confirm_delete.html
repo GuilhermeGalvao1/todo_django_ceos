@@ -1,13 +1,19 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<h1>ToDo List</h1>
-<hr>
-<a href="{% url 'tasks' %}">Voltar</a>
-<form method="POST">
-    {% csrf_token %}
-    <p>Tem certeza, que deseja apagar essa tarefa? "{{task}}"</p>
-    <input type="submit" value="Apagar">
-</form>
+<div class="header-bar">
+    <div>
+        <a href="{% url 'tasks' %}">&#8592; Voltar</a>
+        <h1>ToDo List</h1>
+    </div>
+</div>
+
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        <p>Tem certeza, que deseja apagar a tarefa "{{task}}"?</p>
+        <input class="button" type="submit" value="Apagar">
+    </form>
+</div>
 
 {% endblock content %}

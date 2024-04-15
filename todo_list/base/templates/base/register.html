@@ -1,27 +1,29 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<h1>ToDo List</h1>
-<h1>Sign in</h1>
-
-<hr>
+<div class="header-bar">
+    <div>
+        <h1>ToDo List</h1>
+        <h1>Registre-se</h1>
+    </div>
+</div>
 
 <form method="POST">
     {% csrf_token %}
     <div>
         <label for="id_username">Usuário:</label>
-        <br>
+        
         {{ form.username }}
         <p>Obrigatório. 150 caracteres ou menos. Somente letras, dígitos e @/./+/-/_.</p>
     </div>
     <div>
         <label for="id_password1">Senha:</label>
-        <br>
+        
         {{ form.password1 }}
     </div>
     <div>
         <label for="id_password2">Confirme a senha:</label>
-        <br>
+        
         {{ form.password2 }}
         <p>
             Sua senha não pode ser muito semelhante ao seu usuário.<br>
@@ -30,8 +32,8 @@
             Sua senha não pode ser totalmente numérica.
         </p>
     </div>
-    <br>
-    <input type="submit" value="Sign in">
+    
+    <input class="button" type="submit" value="Registrar">
 </form>
 
 

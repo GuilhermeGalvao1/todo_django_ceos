@@ -1,14 +1,32 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<h1>ToDo List</h1>
-<h3>Editor de Tarefas</h3>
+<div class="header-bar">
+    <div>
+        <a href="{% url 'tasks' %}">&#8592; Voltar</a>
+        <h1>ToDo List</h1>
+        <h3>Editor de Tarefas</h3>
+    </div>
+</div>
+
 <hr>
-<a href="{% url 'tasks' %}">Voltar</a>
-<form method="POST" action="">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Criar">
-</form>
+<div class="card-body">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div>
+            <label for="id_título">Título:</label><br>
+            {{ form.título }}
+        </div>
+        <div>
+            <br><label for="id_descrição">Descrição:</label><br>
+            {{ form.descrição }}
+        </div>
+        <div style="text-align: center;">
+            <label for="id_completa" style="display: inline-block; width: 100px; text-align: right; margin-right: 1px;">Completa</label>
+            {{ form.completa }}
+        </div>
+        <br><input class="button" type="submit" value="Criar"> 
+    </form>
+</div>
 
 {% endblock content %}
