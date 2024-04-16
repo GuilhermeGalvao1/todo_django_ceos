@@ -8,7 +8,6 @@
     </div>
 </div>
 
-
 <form method="POST">
     {% csrf_token %}
     <div>
@@ -26,5 +25,12 @@
 </form>
 
 <p>Não possui uma conta? <a href="{% url 'register' %}">Registre-se</a></p>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("[name='username']").classList.add("button");
+        document.querySelector("[name='password']").classList.add("button");
+    });
+</script>
 
 {% endblock content %}

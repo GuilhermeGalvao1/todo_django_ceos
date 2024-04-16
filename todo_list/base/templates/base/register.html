@@ -12,18 +12,18 @@
     {% csrf_token %}
     <div>
         <label for="id_username">Usuário:</label>
-        
+        <br>
         {{ form.username }}
         <p>Obrigatório. 150 caracteres ou menos. Somente letras, dígitos e @/./+/-/_.</p>
     </div>
     <div>
         <label for="id_password1">Senha:</label>
-        
+        <br>
         {{ form.password1 }}
     </div>
     <div>
         <label for="id_password2">Confirme a senha:</label>
-        
+        <br>
         {{ form.password2 }}
         <p>
             Sua senha não pode ser muito semelhante ao seu usuário.<br>
@@ -36,7 +36,14 @@
     <input class="button" type="submit" value="Registrar">
 </form>
 
-
 <p>Já possui uma conta? <a href="{% url 'login' %}">Login</a></p>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("[name='username']").classList.add("button");
+        document.querySelector("[name='password1']").classList.add("button");
+        document.querySelector("[name='password2']").classList.add("button");
+    });
+</script>
 
 {% endblock content %}

@@ -9,12 +9,11 @@
     </div>
 </div>
 
-<hr>
 <div class="card-body">
     <form method="POST" action="">
         {% csrf_token %}
         <div>
-            <label for="id_título">Título:</label><br>
+            <label for="id_título">Título:</label>
             {{ form.título }}
         </div>
         <div>
@@ -28,5 +27,12 @@
         <br><input class="button" type="submit" value="Criar"> 
     </form>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("[name='título']").classList.add("button");
+        document.querySelector("[name='descrição']").classList.add("button");
+    });
+</script>
 
 {% endblock content %}
