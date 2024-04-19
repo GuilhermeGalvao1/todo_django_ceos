@@ -1,34 +1,76 @@
-{% if request.user.is_authenticated %}
-<h1>{{request.user}}</h1>
+{% extends 'base/main.html' %}
+{% block content %}
+
+<div class="header-bar">
+    <div>
+        <h1 style="text-align: center; margin-top: 10px;">ToDo List</h1>
+        {% if request.user.is_authenticated %}
 <a href="{% url 'logout' %}">Logout</a>
 {% else %}
 <a href="{% url 'login' %}">Login</a>
-{%endif%}
+{% endif %}
+    </div>
+</div>
+
+
+<div id="search-add-wrapper">
+    <form method="GET" style="margin-top: 20px;display: flex;">
+        <input class="button" type="text" name="search-area" value="{{search_input}}">
+        <input class="button" type="submit" value="&#128269;">
+    </form>
+    <a id="add-link" href="{% url 'task-create' %}">&#x2b;</a>
+</div>
+
 
 <hr>
-<h1>ToDo List</h1>
-<h1>Bem vindo, {{request.user}}!</h1>
-<a href="{% url 'task-create' %}">Adicionar Tarefa</a>
-
-<form method="GET">
-    <input type="text" name="search-area" value="{{search_input}}">
-    <input type="submit" value="Procurar...">
-</form>
-
-<table>
-    <tr>
-        <th>Sua lista</th>
-        <th></th>
-        <th></th>
-    </tr>
+<h3>Você tem <i>{{count}}</i> tarefas incompletas.</h3>
+<div class="task-items-wrapper">
     {% for task in tasks %}
-    <tr>
-        <td>{{task.título}}</td>
-        <td><a href="{% url 'task' task.id %}">Detalhes</a></td>
-        <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
-        <td><a href="{%url 'task-delete' task.id %}">Apagar</a></td>
-    </tr>
+    <div class="task-wrapper">
+        {% if task.completa %}
+        <div class="task-title">
+            <div class="task-complete-icon"></div>
+            <i><s><a href="{% url 'task-update' task.id %}">{{task}}</a></s></i>
+        </div>
+        <a class="delete-link" href="{%url 'task-delete' task.id %}">&#215;</a>
+        {% else %}
+        <div class="task-title">
+            <div class="task-incomplete-icon"></div>
+            <a href="{% url 'task-update' task.id %}">{{task}}</a>
+        </div>
+        <a class="delete-link" href="{%url 'task-delete' task.id %}">&#215;</a>
+        {% endif %}
+    </div>
+
     {% empty %}
-    <h3>Lista de tarefas vazia</h3>
+    <h3>Lista de tarefas vazia!</h3>
     {% endfor %}
-</table>
+
+    <style>
+        .header-message {
+            background-color: #549CC6;
+            color: #E7E6E1;
+            padding: 15px 0; /* Ajuste o preenchimento superior e inferior conforme necessário */
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999; /* Certifique-se de que a mensagem esteja acima de outros elementos */
+        }
+
+        .header-message p {
+            font-size: 32px; /* Aqui você pode ajustar o tamanho da fonte da mensagem */
+            margin: 0;
+            line-height: 50px; /* Ajuste a altura da linha para corresponder à altura da barra superior */
+
+        }
+    </style>
+    <body>
+        <div class="header-message">
+            <p>Bem vindo, {{request.user}}!</p>
+        </div>
+    </body>
+</div>
+
+{% endblock content %}

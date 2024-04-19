@@ -1,24 +1,25 @@
-<h1>ToDo List</h1>
-<h1>Sign in</h1>
+{% extends 'base/main.html' %}
+{% block content %}
 
-<hr>
+<div class="header-bar">
+    <div>
+        <h1>Registre-se</h1>
+    </div>
+</div>
 
 <form method="POST">
     {% csrf_token %}
     <div>
         <label for="id_username">Usuário:</label>
-        <br>
         {{ form.username }}
         <p>Obrigatório. 150 caracteres ou menos. Somente letras, dígitos e @/./+/-/_.</p>
     </div>
     <div>
         <label for="id_password1">Senha:</label>
-        <br>
         {{ form.password1 }}
     </div>
     <div>
         <label for="id_password2">Confirme a senha:</label>
-        <br>
         {{ form.password2 }}
         <p>
             Sua senha não pode ser muito semelhante ao seu usuário.<br>
@@ -27,9 +28,46 @@
             Sua senha não pode ser totalmente numérica.
         </p>
     </div>
-    <br>
-    <input type="submit" value="Sign in">
+    
+    <input class="button" type="submit" value="Registrar">
 </form>
 
+<p>Já possui uma conta? <a href="{% url 'login' %}">Login</a></p>
 
-<p>Já possui uma conta? <a href="">Login</a></p>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("[name='username']").classList.add("button");
+        document.querySelector("[name='password1']").classList.add("button");
+        document.querySelector("[name='password2']").classList.add("button");
+    });
+</script>
+
+
+<style>
+    .header-message {
+        background-color: #549CC6;
+        color: #E7E6E1;
+        padding: 15px 0; /* Ajuste o preenchimento superior e inferior conforme necessário */
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999; /* Certifique-se de que a mensagem esteja acima de outros elementos */
+    }
+
+    .header-message p {
+        font-size: 48px; /* Aqui você pode ajustar o tamanho da fonte da mensagem */
+        margin: 0;
+        line-height: 50px; /* Ajuste a altura da linha para corresponder à altura da barra superior */
+
+    }
+</style>
+<body>
+    <div class="header-message">
+        <p>ToDo List</p>
+    </div>
+</body>
+
+
+{% endblock content %}

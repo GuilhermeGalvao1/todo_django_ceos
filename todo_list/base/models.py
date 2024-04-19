@@ -10,7 +10,10 @@ class Task(models.Model):
     criar = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.título
+        if self.título:
+            return self.título
+        else:
+            return "Tarefa Sem Título"
     
     class Meta:
         ordering = ['completa']
