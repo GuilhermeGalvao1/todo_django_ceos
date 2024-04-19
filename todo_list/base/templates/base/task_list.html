@@ -3,12 +3,10 @@
 
 <div class="header-bar">
     <div>
-        <h1 style="text-align: center; margin-top: 10px;">ToDo List</h1>
         {% if request.user.is_authenticated %}
-<a href="{% url 'logout' %}">Logout</a>
-{% else %}
-<a href="{% url 'login' %}">Login</a>
-{% endif %}
+        <a href="{% url 'logout' %}">Logout</a> {% else %}
+        <a href="{% url 'login' %}">Login</a> {% endif %}
+        <h1 style="text-align: center;">ToDo List</h1>
     </div>
 </div>
 
@@ -23,7 +21,7 @@
 
 
 <hr>
-<h3>Você tem <i>{{count}}</i> tarefas incompletas.</h3>
+<h3 style="text-align: center;">Você tem {{count}} tarefa{{ count|pluralize:"s" }} incompleta{{ count|pluralize:"s" }}!</h3>
 <div class="task-items-wrapper">
     {% for task in tasks %}
     <div class="task-wrapper">

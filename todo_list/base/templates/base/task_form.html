@@ -4,7 +4,7 @@
 <div class="header-bar">
     <div>
         <a href="{% url 'tasks' %}">&#8592; Voltar</a>
-        <h3>Editor de Tarefas</h3>
+        <h1 style="text-align: center;">Editor de Tarefas</h1>
     </div>
 </div>
 
@@ -54,10 +54,15 @@
         line-height: 50px; /* Ajuste a altura da linha para corresponder à altura da barra superior */
 
     }
+
+    .header-message a {
+        text-decoration: none
+    }
+    
 </style>
 <body>
     <div class="header-message">
-        <p>ToDo List</p>
+        <p><a href="{% url 'tasks' %}">ToDo List</a></p>
     </div>
 </body>
 

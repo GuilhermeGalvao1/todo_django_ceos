@@ -3,7 +3,7 @@
 
 <div class="header-bar">
     <div>
-        <h1>Login</h1>
+        <h1 style="text-align: center;">Login</h1>
     </div>
 </div>
 
@@ -50,12 +50,16 @@
         font-size: 48px; /* Aqui você pode ajustar o tamanho da fonte da mensagem */
         margin: 0;
         line-height: 50px; /* Ajuste a altura da linha para corresponder à altura da barra superior */
+        text-decoration: none;
+    }
 
+    .header-message a {
+        text-decoration: none;
     }
 </style>
 <body>
     <div class="header-message">
-        <p>ToDo List</p>
+        <p><a href="{% url 'login' %}">ToDo List</a></p>
     </div>
 </body>
 
