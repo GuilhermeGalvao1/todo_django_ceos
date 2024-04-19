@@ -1,0 +1,1 @@
+Repositório direcionado ao desenvolvimento do projeto referente à segunda fase do processo seletivo da CEOS Jr., que consiste em um desafio em equipe, visando o desenvolvimento de uma TODO List que cumpra um stack de funcionalidades exigidas previamente.
